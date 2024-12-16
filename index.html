@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="{{ session.get('theme', 'light') }}">
+    <h1>Добро пожаловать в наш магазин</h1>
+    <div class="product-container">
+        {% for product in products %}
+        <div class="product">
+            <img src="{{ product.image }}" alt="{{ product.name }}">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p>Цена: {{ product.price }}₽</p>
+            <button class="add-to-cart" data-id="{{ product.id }}">Добавить в корзину</button>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="/cart">Перейти в корзину</a>
+</body>
+<script src="/static/js/app.js"></script>
+</html>
